@@ -51,7 +51,8 @@ router.post('/signin', (req, res) => {
 	}
 	else
 	{
-		User.findOne({email:req.body.email,password:req.body.password})
+		User.findOne({email : { $regex : new RegExp(req.body.req.body.email,'i')},password:req.body.password})
+		//User.findOne({email:req.body.email,password:req.body.password})
 		.then((data) => {
 			if(data != null)
 			{
